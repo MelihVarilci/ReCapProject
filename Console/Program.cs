@@ -32,12 +32,6 @@ namespace Console
             carManager.Add(car1);
             System.Console.WriteLine("**********************");
 
-            // Eklenen arabayı ekrana yazdırıyoruz.
-            foreach (var car in carManager.GetById(car1.CarId))
-            {
-                System.Console.WriteLine(car.CarId + " nolu araba: " + car.Description + " satılık.");
-            }
-            System.Console.WriteLine("**********************");
 
             // Eklediğimiz arabayı listeden kaldırıyoruz.
             carManager.Delete(car1);

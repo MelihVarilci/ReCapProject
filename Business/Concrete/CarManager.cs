@@ -17,10 +17,20 @@ namespace Business.Concrete
         {
             _cars = cars;
         }
-
-        public List<Car> GetById(int carId)
+        
+        public List<Car> GetByDailyPrice(decimal min, decimal max)
         {
-            return _cars.GetById(carId);
+            return _cars.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
+        }
+
+        public List<Car> GetCarsByBrandId(int id)
+        {
+            return _cars.GetAll(p => p.BrandId == id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _cars.GetAll(p => p.ColorId == id);
         }
 
         public List<Car> GetAll()

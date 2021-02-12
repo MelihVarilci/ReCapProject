@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 
 namespace DataAccess.Concrete.InMemory
@@ -25,18 +27,27 @@ namespace DataAccess.Concrete.InMemory
 
             };
         }
+        
+        //public List<Car> GetById(int carId)
+        //{
+        //    /* Constructor sayesinde elde ettiğimiz araba listesinden LINQ kullanarak
+        //       göndermiş olduğumuz araba ID'sine sahip araba nesnesini geri döndürdük.*/
+        //    return _cars.Where(c=>c.CarId==carId).ToList();
+        //}
+        //public List<Car> GetAll()
+        //{
+        //    // Constructor sayesinde elde ettiğimiz araba listesini geri döndürdük.
+        //    return _cars;
+        //}
 
-        public List<Car> GetById(int carId)
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
-            /* Constructor sayesinde elde ettiğimiz araba listesinden LINQ kullanarak
-               göndermiş olduğumuz araba ID'sine sahip araba nesnesini geri döndürdük.*/
-            return _cars.Where(c=>c.CarId==carId).ToList();
+            return _cars;
         }
 
-        public List<Car> GetAll()
+        public Car Get(Expression<Func<Car, bool>> filter)
         {
-            // Constructor sayesinde elde ettiğimiz araba listesini geri döndürdük.
-            return _cars;
+            throw new NotImplementedException();
         }
 
         public void Add(Car car)
