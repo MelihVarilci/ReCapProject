@@ -19,11 +19,11 @@ namespace DataAccess.Concrete.InMemory
             // Constructor sayesinde araba listesini hazırladık.
             _cars = new List<Car>
             {
-                new Car{CarId = 1, BrandId = 1, ColorId = 1, DailyPrice = 120, ModelYear = "2018", Description = "Öğretmenden"},
-                new Car{CarId = 2, BrandId = 1, ColorId = 2, DailyPrice = 120, ModelYear = "2016", Description = "Öğrenciden"},
-                new Car{CarId = 3, BrandId = 2, ColorId = 1, DailyPrice = 120, ModelYear = "2019", Description = "Doktordan"},
-                new Car{CarId = 4, BrandId = 2, ColorId = 2, DailyPrice = 120, ModelYear = "2021", Description = "Mühendisten"},
-                new Car{CarId = 5, BrandId = 2, ColorId = 3, DailyPrice = 120, ModelYear = "2020", Description = "Muhasebeciden"},
+                new Car{CarId = 1, BrandId = 1, ColorId = 1, CarDailyPrice = 120, CarModelYear = "2018", CarDescription = "Öğretmenden"},
+                new Car{CarId = 2, BrandId = 1, ColorId = 2, CarDailyPrice = 100, CarModelYear = "2016", CarDescription = "Öğrenciden"},
+                new Car{CarId = 3, BrandId = 2, ColorId = 1, CarDailyPrice = 150, CarModelYear = "2019", CarDescription = "Doktordan"},
+                new Car{CarId = 4, BrandId = 2, ColorId = 2, CarDailyPrice = 240, CarModelYear = "2021", CarDescription = "Mühendisten"},
+                new Car{CarId = 5, BrandId = 2, ColorId = 3, CarDailyPrice = 200, CarModelYear = "2020", CarDescription = "Muhasebeciden"},
 
             };
         }
@@ -64,9 +64,9 @@ namespace DataAccess.Concrete.InMemory
             // 'carToUpdate' deki değişkenlerin güncellenmesini sağladık.
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.BrandId = car.BrandId;
-            carToUpdate.DailyPrice = car.DailyPrice;
-            carToUpdate.Description = car.Description;
-            carToUpdate.ModelYear = car.ModelYear;
+            carToUpdate.CarDailyPrice = car.CarDailyPrice;
+            carToUpdate.CarDescription = car.CarDescription;
+            carToUpdate.CarModelYear = car.CarModelYear;
 
         }
 

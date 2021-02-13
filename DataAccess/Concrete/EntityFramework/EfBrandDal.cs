@@ -12,6 +12,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
         {
+            // dispose
             using (ReCapContext context = new ReCapContext())
             {
                 return filter == null ? context.Set<Brand>().ToList() : context.Set<Brand>().Where(filter).ToList();

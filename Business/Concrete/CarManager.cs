@@ -17,10 +17,11 @@ namespace Business.Concrete
         {
             _cars = cars;
         }
-        
+
+
         public List<Car> GetByDailyPrice(decimal min, decimal max)
         {
-            return _cars.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
+            return _cars.GetAll(p => p.CarDailyPrice >= min && p.CarDailyPrice <= max);
         }
 
         public List<Car> GetCarsByBrandId(int id)
@@ -30,7 +31,7 @@ namespace Business.Concrete
 
         public List<Car> GetCarsByColorId(int id)
         {
-            return _cars.GetAll(p => p.ColorId == id);
+            return _cars.GetAll(p=> p.ColorId == id);
         }
 
         public List<Car> GetAll()
