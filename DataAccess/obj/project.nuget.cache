@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "pd/H589d/BJ690VUkBG8y2oZ+4mtOW2S+4aIyj8/1/VtfLjxen5ejzT8gFt4WV+8SOA40fYo60+XlWH1AQ3A9Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\varil\\source\\repos\\ReCapProject\\DataAccess\\DataAccess.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\varil\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\varil\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

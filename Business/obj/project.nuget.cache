@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "NakqbEcWxsYSWM6gjkukwASL26EjJ/XCjwureEVNYzf7/X2XC7r3437DHbEfKfFf00YD6dS1jTDKck9JXS6Weg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\varil\\source\\repos\\ReCapProject\\Business\\Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\varil\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\varil\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
