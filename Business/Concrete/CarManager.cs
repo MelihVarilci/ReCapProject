@@ -6,6 +6,7 @@ using Business.Abstract;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -52,6 +53,11 @@ namespace Business.Concrete
         public void Delete(Car car)
         {
             _cars.Delete(car);
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _cars.GetCarDetails();
         }
     }
 }

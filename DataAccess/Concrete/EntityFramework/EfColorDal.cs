@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfColorDal:IColorDal
+    public class EfColorDal:EfEntityRepositoryBase<Car,ReCapContext>,IColorDal
     {
         public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
         {
@@ -54,6 +56,25 @@ namespace DataAccess.Concrete.EntityFramework
                 var deletedEntity = context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
                 context.SaveChanges();
+            }
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            using (ReCapContext context = new ReCapContext())
+            {
+                var result = from c in context.Cars
+                    join b in context.Brands
+                        on c.BrandId equals b.BrandId
+                    select new CarDetailDto
+                    {
+                        CarId = c.CarId,
+                        CarDailyPrice = c.CarDailyPrice,
+                        CarDescription = c.CarDescription,
+                        CarModelYear = c.CarModelYear,
+                        BrandName = b.BrandName
+                    };
+                return result.ToList();
             }
         }
     }

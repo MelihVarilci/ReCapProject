@@ -10,8 +10,6 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            
             // Yeni bir araba nesnesi oluşturuyoruz ve ilk atamalarını gerçekleştiriyoruz.
             Car car1 = new Car()
             {
@@ -21,11 +19,55 @@ namespace Console
                 CarDescription = "Savcıdan",
                 CarModelYear = "2011"
             };
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetCarDetails())
+            {
+                System.Console.WriteLine(
+                    "Car Name : " + car.CarDescription + 
+                    "\nBrand Name : " + car.BrandName +
+                    "\nColor Name : " + car.ColorName +
+                    "\nDail Price : " + car.CarDailyPrice +
+                    "\n*******************"
+                    );
+            }
+
+            // Id ile ilgili markanın id'sinin database'teki marka değerini öğrenme.
+            //BrandManager();
+
+            // Id ile ilgili renk id'sinin database'teki renk değerini öğrenme.
+            //ColorManager();
+
+
+            //CarManager(car1);
+        }
+
+        private static void BrandManager()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+
+            foreach (var brand in brandManager.GetByBrandId(2))
+            {
+                System.Console.WriteLine(brand.BrandId + " nolu marka : " + brand.BrandName);
+            }
+        }
+
+        private static void ColorManager()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            foreach (var color in colorManager.GetByColorId(2))
+            {
+                System.Console.WriteLine(color.ColorId + " nolu renk : " + color.ColorName);
+            }
+        }
+
+        private static void CarManager(Car car1)
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
 
             // Tüm araba listesini yazdırıyoruz.
             foreach (var car in carManager.GetAll())
             {
-                System.Console.WriteLine(car.CarId+" nolu araba "+car.CarModelYear+" model ve "+car.CarDescription);   
+                System.Console.WriteLine(car.CarId + " nolu araba " + car.CarModelYear + " model ve " + car.CarDescription);
             }
 
             // Arabanın Description'ı 2 Harften Eşit veya Fazlayse ve DailyPrice'ı 0 dan Büyükse Database'e ekleme işlemi yapıyoruz.
@@ -49,7 +91,8 @@ namespace Console
             {
                 if (car.CarId == car1.CarId)
                 {
-                    System.Console.WriteLine(car.CarId + " nolu araba " + car.CarModelYear + " model ve " + car.CarDescription + " kiralık.");
+                    System.Console.WriteLine(car.CarId + " nolu araba " + car.CarModelYear + " model ve " + car.CarDescription +
+                                             " kiralık.");
                 }
             }
 
@@ -74,8 +117,6 @@ namespace Console
             {
                 System.Console.WriteLine(car.CarId + " nolu araba " + car.CarModelYear + " model ve " + car.CarDescription);
             }
-
-
         }
     }
 }

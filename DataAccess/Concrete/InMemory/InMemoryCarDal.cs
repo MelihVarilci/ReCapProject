@@ -6,6 +6,7 @@ using System.Text;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -78,6 +79,11 @@ namespace DataAccess.Concrete.InMemory
 
             // Listeden arabayı kaldırdık.
             _cars.Remove(carToDelete);
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
         }
     }
 }
