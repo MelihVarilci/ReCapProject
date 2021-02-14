@@ -10,7 +10,7 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
+            //CarManager carManager = new CarManager(new EfCarDal());
             
             // Yeni bir araba nesnesi oluşturuyoruz ve ilk atamalarını gerçekleştiriyoruz.
             //Car car1 = new Car()
