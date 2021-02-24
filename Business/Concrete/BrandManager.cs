@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -28,6 +30,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Brand>>(_brand.GetAll(p => p.BrandId == id),Messages.BrandListed);
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
             _brand.Add(brand);

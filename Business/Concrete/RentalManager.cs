@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -60,13 +62,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(), Messages.RentalListed);
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
-            IDataResult<Rental> resultRental = CheckReturnDate(rental.CarId);
-            if (!resultRental.Success)
-            {
-                return new ErrorResult(resultRental.Message);
-            }
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.RentalAdded);
         }

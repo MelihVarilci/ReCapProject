@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -28,7 +30,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll(u => u.UserId == id),Messages.UserListed);
         }
-
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
             _userDal.Add(user);

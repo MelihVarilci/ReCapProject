@@ -60,3 +60,8 @@ C:\Users\varil\source\repos\ReCapProject\Console\obj\Debug\netcoreapp3.1\Console
 C:\Users\varil\source\repos\ReCapProject\Console\obj\Debug\netcoreapp3.1\Console.dll
 C:\Users\varil\source\repos\ReCapProject\Console\obj\Debug\netcoreapp3.1\Console.pdb
 C:\Users\varil\source\repos\ReCapProject\Console\obj\Debug\netcoreapp3.1\Console.genruntimeconfig.cache
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Autofac.dll
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Autofac.Extensions.DependencyInjection.dll
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Autofac.Extras.DynamicProxy.dll
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\FluentValidation.dll

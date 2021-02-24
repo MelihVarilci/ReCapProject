@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -28,12 +30,13 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Color>>(_color.GetAll(p => p.ColorId == id),Messages.ColorListed);
         }
 
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color brand)
         {
             _color.Add(brand);
             return new SuccessResult(Messages.ColorAdded);
         }
-
+        
         public IResult Update(Color brand)
         {
             _color.Update(brand);

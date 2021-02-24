@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
@@ -50,12 +52,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_cars.GetAll(),Messages.CarListed);
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            if (car.CarDescription.Length<2)
-            {
-                return new ErrorResult(Messages.CarDescriptionInvalid);
-            }
+            // business codes
             _cars.Add(car);
             return new SuccessResult(Messages.CarAdded);
         }
