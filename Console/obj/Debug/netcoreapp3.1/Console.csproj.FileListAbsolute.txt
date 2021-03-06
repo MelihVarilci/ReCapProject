@@ -67,3 +67,4 @@ C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Castle.
 C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\FluentValidation.dll
 C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Abstractions.dll

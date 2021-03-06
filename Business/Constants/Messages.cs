@@ -6,6 +6,8 @@ namespace Business.Constants
 {
     public static class Messages
     {
+        public static string AuthorizationDenied = "Yetkiniz yok.";
+
         public static string BrandAdded = "Markalar Eklendi";
         public static string BrandNameInvalid = "Markalar ismi geçersiz";
         public static string BrandListed = "Markalar listelendi";
@@ -15,6 +17,11 @@ namespace Business.Constants
         public static string CarDescriptionInvalid = "Araba ismi geçersiz";
         public static string MaintenanceTime = "Sistem bakımda";
         public static string CarListed = "Arabalar listelendi";
+
+        public static string CarImageListed = "Araba resimleri listelendi";
+        public static string CarImageAdded = "Araba resmi eklendi";
+        public static string CarImageUpdated = "Araba resmi güncellendi";
+        public static string FailAddedImageLimit = "Resim limitine erişildi";
 
         public static string ColorAdded = "Renk Eklendi";
         public static string ColorNameInvalid = "Renk ismi geçersiz";
@@ -38,10 +45,12 @@ namespace Business.Constants
         public static string UserDescriptionInvalid = "Kullanıcı ismi geçersiz";
         public static string UserListed = "Kullanıcı listelendi";
         public static string UserUpdated = "Kullanıcı güncellendi";
+        public static string UserRegistered = "Kullanıcı oldu";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
 
-        public static string CarImageListed = "Araba resimleri listelendi";
-        public static string CarImageAdded = "Araba resmi eklendi";
-        public static string CarImageUpdated = "Araba resmi güncellendi";
-        public static string FailAddedImageLimit = "Resim limitine erişildi";
+        public static string PasswordError = "Parola hatası";
+        public static string SuccessfulLogin = "Başarılı giriş";
+        public static string UserAlreadyExists = "Kullanıcı mevcut";
+        public static string AccessTokenCreated = "Token oluşturuldu";
     }
 }

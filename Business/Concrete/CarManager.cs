@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Business.Abstract;
+﻿using Business.Abstract;
+using Business.Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Result;
 using DataAccess.Abstract;
-using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using Entities.DTOs;
+using System;
+using System.Collections.Generic;
 
 namespace Business.Concrete
 {
@@ -52,6 +50,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_cars.GetAll(),Messages.CarListed);
         }
 
+        [SecuredOperation("car.add")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
@@ -60,6 +59,8 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarAdded);
         }
 
+        [SecuredOperation("car.Update")]
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
             if (car.CarDescription.Length < 2)
@@ -70,6 +71,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarAdded);
         }
 
+        [SecuredOperation("car.Delete")]
         public IResult Delete(Car car)
         {
             if (car.CarDescription.Length < 2)
