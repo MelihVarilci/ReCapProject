@@ -104,3 +104,5 @@ C:\Users\varil\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\zh-Hans\
 C:\Users\varil\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
 C:\Users\varil\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
 C:\Users\varil\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\varil\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\log4net.config
+C:\Users\varil\source\repos\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\log4net.dll

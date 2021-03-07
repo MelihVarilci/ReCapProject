@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Core.Utilities.Result;
 
-namespace Core.Utilities.Interceptors.Business
+namespace Core.Utilities.Business
 {
     public class BusinessRules
     {

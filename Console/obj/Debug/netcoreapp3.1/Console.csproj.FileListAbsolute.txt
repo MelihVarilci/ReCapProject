@@ -68,3 +68,8 @@ C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\FluentV
 C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
 C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.dll
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.ObjectPool.dll
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\Microsoft.Net.Http.Headers.dll
+C:\Users\varil\source\repos\ReCapProject\Console\bin\Debug\netcoreapp3.1\log4net.dll
