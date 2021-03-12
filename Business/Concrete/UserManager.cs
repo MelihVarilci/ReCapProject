@@ -57,7 +57,7 @@ namespace Business.Concrete
         public IResult Delete(User user)
         {
             _userDal.Delete(user);
-            return new SuccessResult(Messages.UserUpdated);
+            return new SuccessResult(Messages.UserDeleted);
         }
     }
 }

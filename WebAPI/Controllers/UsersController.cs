@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Business.Abstract;
 using Core.Entities.Concrete;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace WebAPI.Controllers
 {
@@ -32,6 +33,7 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
@@ -43,10 +45,23 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
         [HttpPost("add")]
         public IActionResult Add(User user)
         {
             var result = _userService.Add(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpPost("delete")]
+        public IActionResult Delete(User user)
+        {
+            var result = _userService.Delete(user);
             if (result.Success)
             {
                 return Ok(result);

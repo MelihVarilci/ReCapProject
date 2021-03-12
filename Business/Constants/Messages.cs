@@ -46,6 +46,7 @@ namespace Business.Constants
         public static string UserDescriptionInvalid = "Kullanıcı ismi geçersiz";
         public static string UserListed = "Kullanıcı listelendi";
         public static string UserUpdated = "Kullanıcı güncellendi";
+        public static string UserDeleted = "Kullanıcı silindi";
         public static string UserRegistered = "Kullanıcı oldu";
         public static string UserNotFound = "Kullanıcı bulunamadı";
 
