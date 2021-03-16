@@ -368,13 +368,37 @@
               "target": "Package",
               "version": "[7.1.0, )"
             },
+            "MicroKnights.Log4NetAdoNetAppender": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.ApplicationInsights.AspNetCore": {
+              "target": "Package",
+              "version": "[2.15.0, )"
+            },
+            "Microsoft.ApplicationInsights.Log4NetAppender": {
+              "target": "Package",
+              "version": "[2.17.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[3.1.12, )"
             },
-            "Microsoft.TestPlatform.ObjectModel": {
+            "Microsoft.AspNetCore.Http": {
               "target": "Package",
-              "version": "[16.9.1, )"
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.Build.Framework": {
+              "target": "Package",
+              "version": "[16.9.0, )"
+            },
+            "System.IO.FileSystem": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.12, )"
             }
           },
           "imports": [

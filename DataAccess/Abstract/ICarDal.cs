@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using Core.DataAccess;
 using DataAccess.Concrete.EntityFramework;
@@ -10,8 +11,6 @@ namespace DataAccess.Abstract
 {
     public interface ICarDal : IEntityRepository<Car>
     {
-        // Kullanmak istediğimiz methodları oluşturuyoruz.
-        List<CarDetailDto> GetCarDetails();
-
+        List<CarDetailDto> GetCarDetails(Expression<Func<Car, bool>> filter = null);
     }
 }

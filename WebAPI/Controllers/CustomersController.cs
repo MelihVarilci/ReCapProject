@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Logging;
+using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Entities.Concrete;
 
 namespace WebAPI.Controllers
@@ -43,6 +46,8 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [LogAspect(typeof(DatabaseLogger))]
+        [CacheAspect]
         [HttpGet("getcustomerdetail")]
         public IActionResult GetCustomerDetail()
         {
