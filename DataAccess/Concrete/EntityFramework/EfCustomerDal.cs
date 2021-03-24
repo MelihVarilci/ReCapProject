@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
@@ -11,16 +12,16 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCustomerDal:EfEntityRepositoryBase<Customer,ReCapContext>,ICustomerDal
     {
-        public List<CustomerDetailDto> GetCustomerDetails()
+        public List<CustomerDetailDto> GetCustomerDetails(Expression<Func<Customer, bool>> filter = null)
         {
             using (ReCapContext context = new ReCapContext())
             {
-                var result = from ct in context.Customers
+                var result = from ct in filter == null ? context.Customers : context.Customers.Where(filter)
                     join us in context.Users 
                         on ct.UserId equals us.UserId
                     select new CustomerDetailDto
                     {
-                        CutomerId = ct.CustomerId,
+                        CustomerId = ct.CustomerId,
                         UserId = us.UserId,
                         CompanyName = ct.CompanyName,
                         Email = us.Email,

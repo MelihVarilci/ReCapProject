@@ -39,6 +39,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(), Messages.CustomerListed);
         }
 
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetailById(int customerId)
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(c=>c.CustomerId==customerId), Messages.CustomerListed);
+        }
+
         [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {

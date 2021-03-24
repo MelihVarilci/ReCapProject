@@ -31,7 +31,9 @@ namespace DataAccess.Concrete.EntityFramework
                         CarDescription = cr.CarDescription,
                         BrandName = b.BrandName,
                         ColorName = cl.ColorName,
-                        CarDailyPrice = cr.CarDailyPrice
+                        CarDailyPrice = cr.CarDailyPrice,
+                        Status = !context.Rentals.Any(r => r.CarId == cr.CarId && (r.ReturnDate == null || r.ReturnDate > DateTime.Now))
+
                     };
                 return result.ToList();
             }

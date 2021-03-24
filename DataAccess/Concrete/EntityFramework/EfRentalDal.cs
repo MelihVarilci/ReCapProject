@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
@@ -12,11 +13,11 @@ namespace DataAccess.Concrete.EntityFramework
     public class EfRentalDal:EfEntityRepositoryBase<Rental,ReCapContext>,IRentalDal
     {
         
-        public List<RentalDetailDto> GetRentalDetails()
+        public List<RentalDetailDto> GetRentalDetails(Expression<Func<Rental, bool>> filter = null)
         {
             using (ReCapContext context = new ReCapContext())
             {
-                var result = from rt in context.Rentals
+                var result = from rt in filter == null ? context.Rentals : context.Rentals.Where(filter)
                     join cr in context.Cars on rt.CarId equals cr.CarId
                     join cst in context.Customers on rt.CustomerId equals cst.CustomerId
                     join usr in context.Users on cst.UserId equals usr.UserId
@@ -24,6 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
                     join clr in context.Colors on cr.ColorId equals clr.ColorId 
                     select new RentalDetailDto
                     {
+                        RentalId = rt.RentalId,
                         CompanyName = cst.CompanyName,
                         CarModelYear = cr.CarModelYear,
                         CarDailyPrice = cr.CarDailyPrice,
