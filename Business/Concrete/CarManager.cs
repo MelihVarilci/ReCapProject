@@ -68,7 +68,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_cars.GetAll(),Messages.CarListed);
         }
 
-        [SecuredOperation("car.add")]
+        //[SecuredOperation("car.add")]
         [CacheRemoveAspect("ICarService.Get")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
