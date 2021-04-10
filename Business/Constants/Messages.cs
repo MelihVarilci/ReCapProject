@@ -33,6 +33,8 @@ namespace Business.Constants
         public static string CustomerCompanyNameInvalid = "Müşteri firma ismi geçersiz";
         public static string CustomerListed = "Müşteri listelendi";
         public static string CustomerUpdated = "Müşteri güncellendi";
+        public static string CustomerFindexPointIsZero = "Hiç Findex Puanı'nız bulunamadı";
+        public static string CustomerScoreIsInsufficient = "Findex Puanı'nız yetersiz";
 
         public static string RentalAdded = "Kiralama eklendi";
         public static string RentalDeleted = "Kiralama silindi";
@@ -41,6 +43,7 @@ namespace Business.Constants
         public static string RentalUndeliveredCar = "Araç henüz teslim edilmedi.";
         public static string RentalListed = "Kiralamalar listelendi";
         public static string RentalUpdated = "Kiralama güncellendi";
+        public static string CarIsStillRentalled = "Araba henüz teslim edilmemiş";
 
         public static string UserAdded = "Kullanıcı eklendi";
         public static string UserDescriptionInvalid = "Kullanıcı ismi geçersiz";

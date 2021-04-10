@@ -32,7 +32,8 @@ namespace DataAccess.Concrete.EntityFramework
                         BrandName = b.BrandName,
                         ColorName = cl.ColorName,
                         CarDailyPrice = cr.CarDailyPrice,
-                        Status = !context.Rentals.Any(r => r.CarId == cr.CarId && (r.ReturnDate == null || r.ReturnDate > DateTime.Now))
+                        Status = !context.Rentals.Any(r => r.CarId == cr.CarId && (r.ReturnDate == null || r.ReturnDate > DateTime.Now)),
+                        FindexPoint = cr.FindexPoint
 
                     };
                 return result.ToList();

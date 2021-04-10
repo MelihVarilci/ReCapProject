@@ -27,7 +27,7 @@ namespace Business.Concrete
             _cars = cars;
         }
 
-
+        [CacheAspect]
         public IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max)
         {
             if (DateTime.Now.Hour == 22)
@@ -60,7 +60,6 @@ namespace Business.Concrete
         [PerformanceAspect(5)]
         public IDataResult<List<Car>> GetAll()
         {
-            Thread.Sleep(5000);
             if (DateTime.Now.Hour == 22)
             {
                 return new ErrorDataResult<List<Car>>(Messages.CarDescriptionInvalid);
@@ -68,12 +67,17 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_cars.GetAll(),Messages.CarListed);
         }
 
+        [CacheAspect]
+        public IDataResult<Car> GetById(int carId)
+        {
+            return new SuccessDataResult<Car>(_cars.Get(car => car.CarId == carId));
+        }
+
         //[SecuredOperation("car.add")]
         [CacheRemoveAspect("ICarService.Get")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            // business codes
             _cars.Add(car);
             return new SuccessResult(Messages.CarAdded);
         }

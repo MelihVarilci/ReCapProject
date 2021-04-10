@@ -33,6 +33,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(c => c.CustomerId == id), Messages.CustomerListed);
         }
 
+        public IDataResult<List<CustomerDetailDto>> GetByCustomerEmail(string email)
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(c => c.Email == email), Messages.CustomerListed);
+        }
+
         [CacheAspect]
         public IDataResult<List<CustomerDetailDto>> GetCustomerDetails()
         {

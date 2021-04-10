@@ -1,9 +1,13 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Transaction;
+using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concrete;
 using Core.Utilities.Result;
 using Core.Utilities.Security.Hashing;
 using Core.Utilities.Security.JWT;
+using Entities.Concrete;
 using Entities.DTOs;
 
 namespace Business.Concrete
@@ -12,11 +16,13 @@ namespace Business.Concrete
     {
         IUserService _userService;
         ITokenHelper _tokenHelper;
+        ICustomerService _customerService;
 
-        public AuthManager(IUserService userService, ITokenHelper tokenHelper)
+        public AuthManager(IUserService userService, ITokenHelper tokenHelper, ICustomerService customerService)
         {
             _userService = userService;
             _tokenHelper = tokenHelper;
+            _customerService = customerService;
         }
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
@@ -39,7 +45,7 @@ namespace Business.Concrete
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
             var userToCheck = _userService.GetByMail(userForLoginDto.Email);
-            if (userToCheck == null)
+            if (userToCheck.Data == null)
             {
                 return new ErrorDataResult<User>(Messages.UserNotFound);
             }
@@ -49,6 +55,46 @@ namespace Business.Concrete
                 return new ErrorDataResult<User>(Messages.PasswordError);
             }
             return new SuccessDataResult<User>(userToCheck.Data, Messages.SuccessfulLogin);
+        }
+
+        [ValidationAspect(typeof(CustomerUpdateValidator))]
+        [TransactionScopeAspect]
+        public IDataResult<UserForUpdateDto> Update(UserForUpdateDto userForUpdate)
+        {
+            var currentUser = _userService.GetByCustomerId(userForUpdate.UserId);
+
+            var user = new User
+            {
+                UserId = userForUpdate.UserId,
+                Email = userForUpdate.Email,
+                FirstName = userForUpdate.FirstName,
+                LastName = userForUpdate.LastName,
+                PasswordHash = currentUser.Data[0].PasswordHash,
+                PasswordSalt = currentUser.Data[0].PasswordSalt
+            };
+
+            byte[] passwordHash, passwordSalt;
+
+            if (userForUpdate.Password != "")
+            {
+                HashingHelper.CreatePasswordHash(userForUpdate.Password, out passwordHash, out passwordSalt);
+
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+            }
+
+            _userService.Update(user);
+
+            var customer = new Customer
+            {
+                CustomerId = userForUpdate.CustomerId,
+                UserId = userForUpdate.UserId,
+                CompanyName = userForUpdate.CompanyName
+            };
+
+            _customerService.Update(customer);
+
+            return new SuccessDataResult<UserForUpdateDto>(userForUpdate, Messages.CustomerUpdated);
         }
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
