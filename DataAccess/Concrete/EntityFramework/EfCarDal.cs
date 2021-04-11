@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using Core.DataAccess.EntityFramework;
+using Core.Utilities.Uploaders;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -22,6 +23,7 @@ namespace DataAccess.Concrete.EntityFramework
                         on cr.BrandId equals b.BrandId
                     join cl in context.Colors
                         on cr.ColorId equals cl.ColorId
+                    let images = (from carImage in context.CarImages where cr.CarId == carImage.CarId select carImage).ToList()
                     select new CarDetailDto
                     {
                         CarId = cr.CarId,
@@ -33,9 +35,13 @@ namespace DataAccess.Concrete.EntityFramework
                         ColorName = cl.ColorName,
                         CarDailyPrice = cr.CarDailyPrice,
                         Status = !context.Rentals.Any(r => r.CarId == cr.CarId && (r.ReturnDate == null || r.ReturnDate > DateTime.Now)),
-                        FindexPoint = cr.FindexPoint
+                        FindexPoint = cr.FindexPoint,
+                        CarImages = images.Count > 0 ? images : new List<CarImage> { new CarImage { ImagePath = PathNames.CarDefaultImages} }
 
                     };
+                //return filter == null
+                //    ? result.ToList()
+                //    : result.Where(filter).ToList();
                 return result.ToList();
             }
         }
