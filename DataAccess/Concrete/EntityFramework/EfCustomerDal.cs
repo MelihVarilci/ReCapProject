@@ -32,11 +32,12 @@ namespace DataAccess.Concrete.EntityFramework
                                  Claims = (from uoc in context.UserOperationClaims.Where(c => c.UserId == us.UserId)
                                            join claim in context.OperationClaims on uoc.OperationClaimId equals claim.Id
                                            select claim.Name).ToList()
-            };
-            return filter == null
-                ? result.ToList()
-                : result.Where(filter).ToList();
+                             };
+                return filter == null
+                    ? result.ToList()
+                    : result.Where(filter).ToList();
+                //: result.SingleOrDefault(filter);
+            }
         }
     }
-}
 }

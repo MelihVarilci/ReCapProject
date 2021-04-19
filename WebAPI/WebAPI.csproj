@@ -27,5 +27,7 @@
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/launchsettings.json" /></VisualStudio></ProjectExtensions>
+
 
 </Project>

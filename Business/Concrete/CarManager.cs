@@ -9,6 +9,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Logging;
@@ -20,7 +21,7 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
-        ICarDal _cars;
+        private readonly ICarDal _cars;
 
         public CarManager(ICarDal cars)
         {
@@ -50,9 +51,10 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult<List<CarDetailDto>> GetCarDetailsByCarId(int carId)
+        public IDataResult<CarDetailDto> GetCarDetailsByCarId(int carId)
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_cars.GetCarDetails(c => c.CarId == carId));
+            var getCarDetailsByCarId = _cars.GetCarDetails(c => c.CarId == carId).SingleOrDefault();
+            return new SuccessDataResult<CarDetailDto>(getCarDetailsByCarId);
         }
 
         [CacheAspect(duration: 10)]

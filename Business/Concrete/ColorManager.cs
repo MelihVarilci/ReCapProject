@@ -22,12 +22,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Color>> GetAll()
         {
-            return new SuccessDataResult<List<Color>>(_color.GetAll(),Messages.ColorListed);
+            return new SuccessDataResult<List<Color>>(_color.GetAll(), Messages.ColorListed);
         }
 
         public IDataResult<List<Color>> GetByColorId(int id)
         {
-            return new SuccessDataResult<List<Color>>(_color.GetAll(p => p.ColorId == id),Messages.ColorListed);
+            return new SuccessDataResult<List<Color>>(_color.GetAll(p => p.ColorId == id), Messages.ColorListed);
         }
 
         [ValidationAspect(typeof(ColorValidator))]
@@ -36,7 +36,7 @@ namespace Business.Concrete
             _color.Add(brand);
             return new SuccessResult(Messages.ColorAdded);
         }
-        
+
         public IResult Update(Color brand)
         {
             _color.Update(brand);
@@ -46,7 +46,19 @@ namespace Business.Concrete
         public IResult Delete(Color brand)
         {
             _color.Delete(brand);
-            return new SuccessResult(Messages.ColorUpdated);
+            return new SuccessResult(Messages.ColorDeleted);
+        }
+
+        public IResult DeleteById(int colorId)
+        {
+            var result = _color.Get(c => c.ColorId == colorId);
+            if (result != null)
+            {
+                _color.Delete(result);
+                return new SuccessResult(Messages.ColorDeleted);
+            }
+
+            return new ErrorResult();
         }
     }
 }

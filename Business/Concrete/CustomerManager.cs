@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Business.Abstract;
 using Business.Constants;
@@ -33,9 +34,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(c => c.CustomerId == id), Messages.CustomerListed);
         }
 
-        public IDataResult<List<CustomerDetailDto>> GetByCustomerEmail(string email)
+        public IDataResult<CustomerDetailDto> GetByCustomerEmail(string email)
         {
-            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(c => c.Email == email), Messages.CustomerListed);
+            var getByCustomerEmail = _customerDal.GetCustomerDetails(c => c.Email == email).SingleOrDefault();
+            return new SuccessDataResult<CustomerDetailDto>(getByCustomerEmail, Messages.CustomerListed);
         }
 
         [CacheAspect]
@@ -44,9 +46,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(), Messages.CustomerListed);
         }
 
-        public IDataResult<List<CustomerDetailDto>> GetCustomerDetailById(int customerId)
+        public IDataResult<CustomerDetailDto> GetCustomerDetailById(int customerId)
         {
-            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetCustomerDetails(c=>c.CustomerId==customerId), Messages.CustomerListed);
+            var getCustomerDetailById = _customerDal.GetCustomerDetails(c => c.CustomerId == customerId).SingleOrDefault();
+            return new SuccessDataResult<CustomerDetailDto>(getCustomerDetailById, Messages.CustomerListed);
         }
 
         [ValidationAspect(typeof(CustomerValidator))]

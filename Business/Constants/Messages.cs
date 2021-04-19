@@ -28,6 +28,7 @@ namespace Business.Constants
         public static string ColorNameInvalid = "Renk ismi geçersiz";
         public static string ColorListed = "Renkler listelendi";
         public static string ColorUpdated = "Renk güncellendi";
+        public static string ColorDeleted = "Renk silindi";
 
         public static string CustomerAdded = "Müşteri eklendi";
         public static string CustomerCompanyNameInvalid = "Müşteri firma ismi geçersiz";

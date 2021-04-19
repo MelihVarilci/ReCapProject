@@ -12,7 +12,7 @@ namespace Business.Abstract
         IDataResult<List<Car>> GetByDailyPrice(decimal min, decimal max);
         IDataResult<List<CarDetailDto>> GetCarsByBrandId(int brandId);
         IDataResult<List<CarDetailDto>> GetCarsByColorId(int colorId);
-        IDataResult<List<CarDetailDto>> GetCarDetailsByCarId(int carId);
+        IDataResult<CarDetailDto> GetCarDetailsByCarId(int carId);
         IDataResult<List<Car>> GetAll();
         IDataResult<Car> GetById(int carId);
         IResult Add(Car car);
